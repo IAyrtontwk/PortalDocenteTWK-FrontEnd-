@@ -8,9 +8,9 @@ import { Login } from '../models/login.model';
 })
 export class LoginComponent implements OnInit {
   id: any = '';
-  postNotes: Login[] = [];
+  loginInterface: Login[] = [];
   modalTitle: string = 'Crear nota';
-  note: Login = {
+  user: Login = {
     rut: '',
     password: ''
   }
