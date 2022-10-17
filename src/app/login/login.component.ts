@@ -9,7 +9,6 @@ import { Teacher } from '../models/login.model';
 })
 export class LoginComponent implements OnInit {
   id: any = '';
-  loginInterface: Teacher[] = [];
   modalTitle: string = 'Portal Docente';
   user: Teacher = {
     rut: '',
@@ -17,8 +16,10 @@ export class LoginComponent implements OnInit {
     name: '',
     lastname: '',
     mail: ''
-
   }
+  inputRut: string = "";
+  inputPassword: string = "";
+  rememberUserSwitch: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
