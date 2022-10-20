@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

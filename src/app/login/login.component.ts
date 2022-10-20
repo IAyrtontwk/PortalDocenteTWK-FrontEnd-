@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../models/login.model';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [CookieService]
 })
 export class LoginComponent implements OnInit {
   id: any = '';
-  modalTitle: string = 'Portal Docente';
   user: Teacher = {
     rut: '',
     password: '',
@@ -20,14 +21,41 @@ export class LoginComponent implements OnInit {
   inputRut: string = "";
   inputPassword: string = "";
   rememberUserSwitch: boolean = false;
-  constructor() { }
+
+  // Modal
+  modalTitle: string = 'Configuracion de contraseña';
+  recoveryPass: boolean = false;
+  codVerInput: string = '';
+  newPassInput: string = '';
+  repeatPassInput: string = '';
+
+  constructor(private cookieService: CookieService) { 
+    console.log(this.cookieService.get('user'));
+    this.inputRut = this.cookieService.get('user');
+  }
 
   ngOnInit(): void {
   }
 
+  getCookie(name: string){
+     this.cookieService.get(name)
+  }
+  setCookie = (name: string, value: any) => {
+    this.cookieService.set(name,value);
+  };
+  login = () => {
+    if(this.rememberUserSwitch)
+    this.setCookie('user',this.inputRut);
+  };
+
+
+  changePass = () =>{
+    this.modalTitle = ' Recuperar contraseña ';
+    this.recoveryPass = true;
+  }
 }
 
-var Fn = {
+let Fn = {
 	// Valida el rut con su cadena completa "XXXXXXXX-X"
 	validaRut : function (rutCompleto : any) {
 		if (!/^[0-9]+-[0-9kK]{1}$/.test( rutCompleto ))
@@ -46,5 +74,5 @@ var Fn = {
 	}
 }
 // Uso de la función
-alert( Fn.validaRut('11111111-1') ? 'Valido' : 'inválido');
+// alert( Fn.validaRut('1111111-1') ? 'Valido' : 'inválido');
 
