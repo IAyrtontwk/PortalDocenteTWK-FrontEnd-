@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   inputRut: string = "";
   inputPassword: string = "";
   rememberUserSwitch: boolean = false;
-  rutValido: boolean = false;
+  rutInvalido: boolean = false;
 
   // Modal
   modalTitle: string = 'Configuracion de contraseña';
@@ -55,9 +55,9 @@ export class LoginComponent implements OnInit {
   //Función KeyUp rut
   onKeyUpEventRut(event: any){
     if(Fn.validaRut(event.target.value)) {
-      this.rutValido = false;
+      this.rutInvalido = false;
     }else{
-      this.rutValido = true;
+      this.rutInvalido = true;
     }
  }
   login = () => {
