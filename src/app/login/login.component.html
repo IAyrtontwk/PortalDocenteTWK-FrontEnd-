@@ -2,18 +2,26 @@
   <h1 style="margin: bottom 2%">Portal Docente TWK</h1>
 
   <div class="mb-3">
-    <label for="rutLogin" class="form-label">Rut</label>
+    <label for="rutLogin" class="form-label">
+    Rut
+    </label>
     <input
       type="text"
       class="form-control"
       id="inputRut"
       name="rutLogin"
       [(ngModel)]="inputRut"
+      (keyup)="onKeyUpEventRut($event)"
     />
+  </div>
+  <div *ngIf="rutValido" id="rutHelp" class="form-text">
+    Ingrese rut correcto
   </div>
 
   <div class="mb-3">
-    <label for="passLogin" class="form-label">Contraseña </label>
+    <label for="passLogin" class="form-label">
+      Contraseña
+    </label>
     <input
       type="text"
       class="form-control"
@@ -32,12 +40,16 @@
       name="switchRecUser"
       [(ngModel)]="rememberUserSwitch"
     />
-    <label class="form-check-label" for="switchUserLogin"
-      >Recordar usuario</label
-    >
+    <label class="form-check-label" for="switchUserLogin">
+      Recordar usuario
+    </label>
   </div>
 
-  <div class="mb-3">
+  <div *ngIf="rutValido" class="mb-3" >
+    <button type="submit" class="btn btn-primary" disabled>
+      Entrar
+    </button>
+  </div><div *ngIf="!rutValido" class="mb-3" >
     <button type="submit" class="btn btn-primary" (click)="login()">
       Entrar
     </button>
@@ -51,7 +63,7 @@
       class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#changePassModal"
-      (click)="changePass()"
+      (click)="isChangePass()"
     >
       Recuperar Contraseña
     </button>
@@ -128,7 +140,7 @@
           >
             Cerrar
           </button>
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-primary" id="btnChangePass" name="btnChangePass">Guardar</button>
         </div>
       </div>
     </div>

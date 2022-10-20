@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   inputRut: string = "";
   inputPassword: string = "";
   rememberUserSwitch: boolean = false;
+  rutValido: boolean = false;
 
   // Modal
   modalTitle: string = 'Configuracion de contraseña';
@@ -30,26 +31,50 @@ export class LoginComponent implements OnInit {
   repeatPassInput: string = '';
 
   constructor(private cookieService: CookieService) { 
+    if(this.cookieService.check('user')){
     console.log(this.cookieService.get('user'));
     this.inputRut = this.cookieService.get('user');
+    this.rememberUserSwitch = true ;
+    }
   }
 
   ngOnInit(): void {
   }
 
+  //Funciones cookies
+  deleteCookie(name: string){
+    this.cookieService.delete(name)
+  }
   getCookie(name: string){
      this.cookieService.get(name)
   }
   setCookie = (name: string, value: any) => {
     this.cookieService.set(name,value);
   };
+
+  //Función KeyUp rut
+  onKeyUpEventRut(event: any){
+    if(Fn.validaRut(event.target.value)) {
+      this.rutValido = false;
+    }else{
+      this.rutValido = true;
+    }
+ }
   login = () => {
-    if(this.rememberUserSwitch)
-    this.setCookie('user',this.inputRut);
+    if (this.rememberUserSwitch) {
+      this.setCookie('user',this.inputRut);
+    }else{
+      this.deleteCookie('user');
+    }
+    this.user.rut = this.inputRut;
+    this.user.password = this.inputPassword;
+    console.log(this.user);
+    this.inputRut = '';
+    this.inputPassword = '';
   };
 
 
-  changePass = () =>{
+  isChangePass = () =>{
     this.modalTitle = ' Recuperar contraseña ';
     this.recoveryPass = true;
   }
@@ -60,9 +85,9 @@ let Fn = {
 	validaRut : function (rutCompleto : any) {
 		if (!/^[0-9]+-[0-9kK]{1}$/.test( rutCompleto ))
 			return false;
-		var tmp 	= rutCompleto.split('-');
-		var digv	= tmp[1]; 
-		var rut 	= tmp[0];
+		let tmp 	= rutCompleto.split('-');
+		let digv	= tmp[1]; 
+		let rut 	= tmp[0];
 		if ( digv == 'K' ) digv = 'k' ;
 		return (Fn.dv(rut) == digv );
 	},
