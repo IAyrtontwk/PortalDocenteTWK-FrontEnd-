@@ -98,6 +98,5 @@ let Fn = {
 		return S?S-1:'k';
 	}
 }
-// Uso de la función
-// alert( Fn.validaRut('1111111-1') ? 'Valido' : 'inválido');
+
 
