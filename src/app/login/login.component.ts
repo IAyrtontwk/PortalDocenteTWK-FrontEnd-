@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../models/login.model';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     password: '',
     name: '',
     lastname: '',
-    mail: ''
+    email: '',
+    authcode: ''
   }
   inputRut: string = "";
   inputPassword: string = "";
@@ -30,7 +32,7 @@ export class LoginComponent implements OnInit {
   newPassInput: string = '';
   repeatPassInput: string = '';
 
-  constructor(private cookieService: CookieService) { 
+  constructor(private cookieService: CookieService, private userService: UserService) { 
     if(this.cookieService.check('user')){
     console.log(this.cookieService.get('user'));
     this.inputRut = this.cookieService.get('user');
@@ -52,6 +54,13 @@ export class LoginComponent implements OnInit {
     this.cookieService.set(name,value);
   };
 
+  //Funciones service User
+  authUser = () => {
+    this.userService.autenthication(this.user).subscribe( data => {
+      console.log(data);
+    })
+  }
+
   //Función KeyUp rut
   onKeyUpEventRut(event: any){
     if(Fn.validaRut(event.target.value)) {
@@ -69,9 +78,14 @@ export class LoginComponent implements OnInit {
     this.user.rut = this.inputRut;
     this.user.password = this.inputPassword;
     console.log(this.user);
+    this.authUser();
+    this.eraseForm();
+  };
+
+  eraseForm = () => {
     this.inputRut = '';
     this.inputPassword = '';
-  };
+  }
 
 
   isChangePass = () =>{
