@@ -7,12 +7,20 @@ import { Teacher } from '../models/login.model'
   providedIn: 'root'
 })
 export class UserService {
+<<<<<<< HEAD
   url = 'http://localhost:4000/api/user/';
+=======
+  url = 'http://localhost:4000/user/';
+>>>>>>> Development
 
   constructor(private http: HttpClient) { }
 
   autenthication(user: Teacher): Observable<any> {
+<<<<<<< HEAD
     return this.http.post(this.url, user);
+=======
+    return this.http.post(this.url+'login', user);
+>>>>>>> Development
   }
 
 }
