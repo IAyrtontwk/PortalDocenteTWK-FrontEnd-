@@ -65,7 +65,7 @@
       data-bs-target="#changePassModal"
       (click)="isChangePass()"
     >
-      Recuperar Contraseña
+    Recuperar Contraseña <!-- Crear Contraseña -->
     </button>
   </div>
 </form>
@@ -96,14 +96,14 @@
         <!-- Input de Verificación -->
         <div *ngIf="recoveryPass" class="mb-3">
           <label for="codVerificacionInput" class="form-label"></label>
-          <input
+           <input
             type="text"
             class="form-control"
             id="codVerificacionInput"
             name="codVerInputModal"
-            placeholder="Código de verificación"
+            placeholder="Código de autorización "
             [(ngModel)]="codVerInput"
-          />
+          /> 
         </div>
 
         <!-- Input de contraseña -->
@@ -126,9 +126,10 @@
             type="text"
             class="form-control"
             id="confirmPassModal"
-            placeholder="Repetir contraseña"
+            placeholder="Confirmar Contraseña "  
             [(ngModel)]="repeatPassInput"
           />
+          
         </div>
 
         <div class="mb-3"></div>
@@ -140,7 +141,7 @@
           >
             Cerrar
           </button>
-          <button type="button" class="btn btn-primary" id="btnChangePass" name="btnChangePass">Guardar</button>
+          <button type="button" class="btn btn-primary" id="btnChangePass" name="btnChangePass" (click)="recuperarContrasena ()">RecuperarClave</button>
         </div>
       </div>
     </div>
