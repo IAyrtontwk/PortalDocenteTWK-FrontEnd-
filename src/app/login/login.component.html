@@ -10,12 +10,14 @@
       class="form-control"
       id="inputRut"
       name="rutLogin"
+      maxlength="10"
+      placeholder="12345678-9"
       [(ngModel)]="inputRut"
       (keyup)="onKeyUpEventRut($event)"
     />
   </div>
   <div *ngIf="rutInvalido" id="rutHelp" class="form-text">
-    Ingrese rut correcto
+    Ingrese rut correcto. Solo con guión (-)
   </div>
 
   <div class="mb-3">
@@ -54,8 +56,6 @@
       Entrar
     </button>
   </div>
-
-  <br />
 
   <div class="mb-3">
     <button

@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private userService: UserService) { 
     if(this.cookieService.check('user')){
-    console.log(this.cookieService.get('user'));
     this.inputRut = this.cookieService.get('user');
     this.rememberUserSwitch = true ;
     }
