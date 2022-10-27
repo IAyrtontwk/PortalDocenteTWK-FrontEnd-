@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../models/login.model';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../services/user.service';
+import * as bcrypt from 'bcryptjs';
+
 
 
 @Component({
@@ -12,14 +14,8 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
   id: any = '';
-  user: Teacher = {
-    rut: '',
-    password: '',
-    name: '',
-    lastname: '',
-    email: '',
-    authcode: ''
-  }
+  user: Teacher = new Teacher('','','','','','','');
+
   inputRut: string = "";
   inputPassword: string = "";
   rememberUserSwitch: boolean = false;
@@ -32,6 +28,7 @@ export class LoginComponent implements OnInit {
   newPassInput: string = '';
   repeatPassInput: string = '';
 
+
   constructor(private cookieService: CookieService, private userService: UserService) { 
     if(this.cookieService.check('user')){
     this.inputRut = this.cookieService.get('user');
@@ -40,6 +37,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.DoLogin();
+  }
+
+  DoLogin() {
+    const salt = bcrypt.genSaltSync(10);
+    const pass = bcrypt.hashSync('algo', salt);
+    console.log(pass)
   }
 
   //Funciones cookies
