@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../models/login.model';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../services/user.service';
-
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,6 @@ import { UserService } from '../services/user.service';
   providers: [CookieService]
 })
 export class LoginComponent implements OnInit {
-  id: any = '';
   user: Teacher = {
     rut: '',
     password: '',
@@ -68,6 +67,14 @@ export class LoginComponent implements OnInit {
       this.rutInvalido = true;
     }
  }
+
+ doLogin = () => {
+  const salt = bcrypt.genSaltSync(8);
+  const pass = bcrypt.hashSync(this.user.password,salt);
+  console.log(pass);
+  this.user.password = pass;
+ }
+
   login = () => {
     if (this.rememberUserSwitch) {
       this.setCookie('user',this.inputRut);
@@ -77,6 +84,7 @@ export class LoginComponent implements OnInit {
     this.user.rut = this.inputRut;
     this.user.password = this.inputPassword;
     console.log(this.user);
+    this.doLogin();
     this.authUser();
     this.eraseForm();
   };

@@ -1,6 +1,7 @@
 <form class="custom-form" method="post">
+  <!-- Titulo -->
   <h1 style="margin: bottom 2%">Portal Docente TWK</h1>
-
+  <!-- input rut -->
   <div class="mb-3">
     <label for="rutLogin" class="form-label">
     Rut
@@ -16,10 +17,11 @@
       (keyup)="onKeyUpEventRut($event)"
     />
   </div>
+  <!-- mensaje rut válido -->
   <div *ngIf="rutInvalido" id="rutHelp" class="form-text">
     Ingrese rut correcto. Solo con guión (-)
   </div>
-
+  <!-- input password -->
   <div class="mb-3">
     <label for="passLogin" class="form-label">
       Contraseña
@@ -32,7 +34,7 @@
       [(ngModel)]="inputPassword"
     />
   </div>
-
+  <!-- switch Recordar Usuario -->
   <div class="form-check form-switch">
     <input
       class="form-check-input"
@@ -46,17 +48,17 @@
       Recordar usuario
     </label>
   </div>
-
+  <!-- Boton Login activado y desactivado según rut valido  -->
   <div *ngIf="rutInvalido" class="mb-3" >
     <button type="submit" class="btn btn-primary" disabled>
       Entrar
     </button>
   </div><div *ngIf="!rutInvalido" class="mb-3" >
-    <button type="submit" class="btn btn-primary" (click)="login()">
+    <button type="submit" class="btn btn-primary" (click)="doLogin()" (click)="login()">
       Entrar
     </button>
   </div>
-
+  <!-- Botón recuperar contraseña  -->
   <div class="mb-3">
     <button
       type="submit"
