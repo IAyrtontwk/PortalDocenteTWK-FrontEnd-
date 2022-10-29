@@ -1,4 +1,3 @@
-
 export class Teacher {
     constructor(
         public rut: string,
