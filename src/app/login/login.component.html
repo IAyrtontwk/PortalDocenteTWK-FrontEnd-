@@ -1,20 +1,13 @@
+
 <form class="custom-form" method="post">
   <h1 style="margin: bottom 2%">Portal Docente TWK</h1>
 
   <div class="mb-3">
     <label for="rutLogin" class="form-label">
-    Rut
+      Rut
     </label>
-    <input
-      type="text"
-      class="form-control"
-      id="inputRut"
-      name="rutLogin"
-      maxlength="10"
-      placeholder="12345678-9"
-      [(ngModel)]="inputRut"
-      (keyup)="onKeyUpEventRut($event)"
-    />
+    <input type="text" class="form-control" id="inputRut" name="rutLogin" maxlength="10" placeholder="12345678-9"
+      [(ngModel)]="inputRut" (keyup)="onKeyUpEventRut($event)" />
   </div>
   <div *ngIf="rutInvalido" id="rutHelp" class="form-text">
     Ingrese rut correcto. Solo con guión (-)
@@ -24,120 +17,77 @@
     <label for="passLogin" class="form-label">
       Contraseña
     </label>
-    <input
-      type="password"
-      class="form-control"
-      id="inputPass"
-      name="passLogin"
-      [(ngModel)]="inputPassword"
-    />
+    <input type="password" class="form-control" id="inputPass" name="passLogin" [(ngModel)]="inputPassword" />
   </div>
 
   <div class="form-check form-switch">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      role="switch"
-      id="switchRecUser"
-      name="switchRecUser"
-      [(ngModel)]="rememberUserSwitch"
-    />
+    <input class="form-check-input" type="checkbox" role="switch" id="switchRecUser" name="switchRecUser"
+      [(ngModel)]="rememberUserSwitch" />
     <label class="form-check-label" for="switchUserLogin">
       Recordar usuario
     </label>
   </div>
 
-  <div *ngIf="rutInvalido" class="mb-3" >
+  <div *ngIf="rutInvalido" class="mb-3">
     <button type="submit" class="btn btn-primary" disabled>
       Entrar
     </button>
-  </div><div *ngIf="!rutInvalido" class="mb-3" >
+  </div>
+  <div *ngIf="!rutInvalido" class="mb-3">
     <button type="submit" class="btn btn-primary" (click)="login()">
       Entrar
     </button>
   </div>
 
   <div class="mb-3">
-    <button
-      type="submit"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#changePassModal"
-      (click)="isChangePass()"
-    >
+    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassModal"
+      (click)="isChangePass()">
       Recuperar Contraseña
     </button>
   </div>
+
+  <div class="mb-3">
+    <a [routerLink]="['home']">Prueba</a>
+  </div>
+
 </form>
 
 <!-- Modal -->
 
-<div
-  class="modal fade"
-  id="changePassModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="changePassModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">
           {{ modalTitle }}
         </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <!-- Input de Verificación -->
         <div *ngIf="recoveryPass" class="mb-3">
           <label for="codVerificacionInput" class="form-label"></label>
-          <input
-            type="text"
-            class="form-control"
-            id="codVerificacionInput"
-            name="codVerInputModal"
-            placeholder="Código de verificación"
-            [(ngModel)]="codVerInput"
-          />
+          <input type="text" class="form-control" id="codVerificacionInput" name="codVerInputModal"
+            placeholder="Código de verificación" [(ngModel)]="codVerInput" />
         </div>
 
         <!-- Input de contraseña -->
         <div class="mb-3">
           <label for="ModalNewPass" class="form-label"></label>
-          <input
-            type="text"
-            class="form-control"
-            id="newPassInput"
-            name="inputNewPassModal"
-            placeholder="Nueva contraseña"
-            [(ngModel)]="newPassInput"
-          />
+          <input type="text" class="form-control" id="newPassInput" name="inputNewPassModal"
+            placeholder="Nueva contraseña" [(ngModel)]="newPassInput" />
         </div>
 
         <!-- Input de repetir contraseña-->
         <div class="mb-3">
           <label for="confirmPassModal" class="form-label"></label>
-          <input
-            type="text"
-            class="form-control"
-            id="confirmPassModal"
-            placeholder="Repetir contraseña"
-            [(ngModel)]="repeatPassInput"
-          />
+          <input type="text" class="form-control" id="confirmPassModal" placeholder="Repetir contraseña"
+            [(ngModel)]="repeatPassInput" />
         </div>
 
         <div class="mb-3"></div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Cerrar
           </button>
           <button type="button" class="btn btn-primary" id="btnChangePass" name="btnChangePass">Guardar</button>

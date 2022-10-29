@@ -23,6 +23,10 @@
     color: black;
     margin-top: 10rem;
   }
+
+  .conteiner-main-conteiner {
+    margin-top: 1%;
+  }
   /* .custom-form input {
     display: block;
     margin: 2rem 0;
