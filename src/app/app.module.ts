@@ -6,19 +6,26 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CrearcontrasenaComponent
+    CrearcontrasenaComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+<<<<<<< HEAD
     
 
+=======
+    HttpClientModule
+>>>>>>> Development
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
