@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
     lastname: '',
     mail: ''
   }
-  // Variables creación de contrasena
-  nuevaContrasena : string = '';
-  confirmarContrasena : string = '';
-  primerCampoModal : string = '';
+  // // Variables creación de contrasena
+  // nuevaContrasena : string = '';
+  // confirmarContrasena : string = '';
+  // primerCampoModal : string = '';
  
-  // Variables recuperacion contrasena
-  olvidarContrasena : string = '';
-  enviarRecuperarClave : string = '';
+  // // Variables recuperacion contrasena
+  // olvidarContrasena : string = '';
+  // enviarRecuperarClave : string = '';
   
 
   // variables Input 
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   rutInvalido: boolean = false;
 
   // Modal
+  formTitle : string = '';
   modalTitle: string = 'Configuracion de contraseña';
   recoveryPass: boolean = false;
   codVerInput: string = '';
@@ -51,19 +52,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // setear modal 
-  setModalCrearContrasena= ()=> {
-    this.modalTitle = 'Crear Contraseña';
-    this.primerCampoModal = 'Contraseña actual'
-  }
-  //función crear contrasena 
-  crearContrasena = () => {
-   if (this.nuevaContrasena ==this.confirmarContrasena){
-    this.user.password = this.nuevaContrasena;
-   }else{
-    alert('Las contrasenas son distintas')
-   }
-  }
+  // // setear modal 
+  // setModalCrearContrasena= ()=> {
+  //   this.modalTitle = 'Crear Contraseña';
+  //   this.primerCampoModal = 'Contraseña actual'
+  // }
+  // //función crear contrasena 
+  // crearContrasena = () => {
+  //  if (this.nuevaContrasena ==this.confirmarContrasena){
+  //   this.user.password = this.nuevaContrasena;
+  //  }else{
+  //   alert('Las contrasenas son distintas')
+  //  }
+  // }
 
 
   setModalRecuperarContrasena = () =>{
@@ -72,11 +73,11 @@ export class LoginComponent implements OnInit {
 
 
   //funcion recuperaración  contrasena
-  recuperarContrasena = ()=>{
-    if (this.nuevaContrasena == this.olvidarContrasena ){
-      this.user.password = this.enviarRecuperarClave 
-    }
-  }
+  // recuperarContrasena = ()=>{
+  //   if (this.nuevaContrasena == this.olvidarContrasena ){
+  //     this.user.password = this.enviarRecuperarClave 
+  //   }
+  // }
 
 
   //Funciones cookies
@@ -113,7 +114,7 @@ export class LoginComponent implements OnInit {
 
 
   isChangePass = () =>{
-    this.modalTitle = 'Recuperar Contraseña' /* Crear Contraseña */;
+    this.formTitle = 'Recuperar Contraseña';
     this.recoveryPass = true;
   }
 }

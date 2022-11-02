@@ -57,22 +57,31 @@
 
   <br />
 
+ 
   <div class="mb-3">
-    <button
+    
+    <button 
       type="submit"
       class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#changePassModal"
       (click)="isChangePass()"
-    >
-    Recuperar Contraseña <!-- Crear Contraseña -->
+      clik="src\app\crearcontrasena\crearcontrasena.component.html"
+    > 
+  
+   
+    crear contrasena
+   
+
     </button>
+   
   </div>
+  <!-- </a> 
 </form>
 
 <!-- Modal -->
 
-<div
+<!-- <div
   class="modal fade"
   id="changePassModal"
   tabindex="-1"
@@ -92,47 +101,47 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body"> -->
         <!-- Input de Verificación -->
-        <div *ngIf="recoveryPass" class="mb-3">
+        <!-- <div *ngIf="recoveryPass" class="mb-3">
           <label for="codVerificacionInput" class="form-label"></label>
            <input
             type="text"
             class="form-control"
             id="codVerificacionInput"
             name="codVerInputModal"
-            placeholder="Código de autorización "
+            placeholder=""
             [(ngModel)]="codVerInput"
           /> 
-        </div>
+        </div> -->
 
         <!-- Input de contraseña -->
-        <div class="mb-3">
+        <!-- <div class="mb-3">Nueva contraseña
           <label for="ModalNewPass" class="form-label"></label>
           <input
             type="text"
             class="form-control"
             id="newPassInput"
             name="inputNewPassModal"
-            placeholder="Nueva contraseña"
+            placeholder=""
             [(ngModel)]="newPassInput"
           />
-        </div>
+        </div> -->
 
-        <!-- Input de repetir contraseña-->
-        <div class="mb-3">
+        <!-- Input de repetir contraseña
+        <div class="mb-3"> Confirmar Contraseña
           <label for="confirmPassModal" class="form-label"></label>
           <input
             type="text"
             class="form-control"
             id="confirmPassModal"
-            placeholder="Confirmar Contraseña "  
+            placeholder=" "  
             [(ngModel)]="repeatPassInput"
           />
           
-        </div>
+        </div> -->
 
-        <div class="mb-3"></div>
+        <!-- <div class="mb-3"></div>
         <div class="modal-footer">
           <button
             type="button"
@@ -143,7 +152,7 @@
           </button>
           <button type="button" class="btn btn-primary" id="btnChangePass" name="btnChangePass" (click)="recuperarContrasena ()">RecuperarClave</button>
         </div>
-      </div>
+       </div>
     </div>
   </div>
-</div>
+</div> --> 
