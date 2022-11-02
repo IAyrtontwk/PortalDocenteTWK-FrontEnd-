@@ -28,13 +28,13 @@
     </label>
   </div>
 
-  <div *ngIf="rutInvalido" class="mb-3">
+  <div *ngIf="rutInvalido"   class="mb-3">
     <button type="submit" class="btn btn-primary" disabled>
       Entrar
     </button>
   </div>
   <div *ngIf="!rutInvalido" class="mb-3">
-    <button type="submit" class="btn btn-primary" (click)="login()">
+    <button [routerLink]="['home']" type="submit" class="btn btn-primary" (click)="login()">
       Entrar
     </button>
   </div>

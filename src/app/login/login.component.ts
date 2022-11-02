@@ -6,15 +6,19 @@ import * as bcrypt from 'bcryptjs';
 
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   providers: [CookieService]
 })
+
+
 export class LoginComponent implements OnInit {
   id: any = '';
   user: Teacher = new Teacher('','','','','','','');
+
 
   inputRut: string = "";
   inputPassword: string = "";
@@ -115,5 +119,3 @@ let Fn = {
 		return S?S-1:'k';
 	}
 }
-
-
