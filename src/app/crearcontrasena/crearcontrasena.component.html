@@ -1,34 +1,19 @@
-<form>
-  <div class="mb-3"> Contraseña actual
-    <label for="NewPass" class="form-label"></label>
-
-    <input type="text"
-     class="form-control"
-     id="newPassInput"
-     name = "InputNewPass"
-     placeholder="1234"
-     [(ngModel)]="firstFormInput"
-    >
-  </div>
-  <div class="mb-3"> nueva Contraseña
-    <label for="NewPass" class="form-label"></label>
-
-    <input type="text"
-     class="form-control"
-     id="newPassInput"
-     name = "InputNewPass"
-     placeholder="1234"
-     [(ngModel)]="newPass"
-    >
-  </div>
-  <div class="mb-3"> confirmar Contraseña
-    <label for="ConfirmPass" class="form-label"></label>
-    <input type="text"
-     class="form-control" 
-     id="ConfirmPassInput"
-     placeholder="1234">
-     [(ngModel)]="confirmPass"
-  </div>
-  <button type="submit" class="btn btn-primary">Crear contraseña</button>
-</form>
+<div class="container p-5">
+  <form>
+    <div class="mb-3"> Nueva Contraseña
+      <label for="NewPass" class="form-label"></label>
+      <input type="text" class="form-control" id="newPassInput" name="InputNewPass" placeholder="1234"
+        [(ngModel)]="newPass">
+    </div>
+    <div class="mb-3"> confirmar Contraseña
+      <label for="ConfirmPass" class="form-label"></label>
+      <input type="text" class="form-control" id="ConfirmPassInput" placeholder="1234" [(ngModel)]="confirmPass">
+    </div>
+    <button type="submit" class="btn btn-primary">Crear contraseña</button>
+  </form>
   
+  <button type="submit" class="btn btn-primary" [routerLink]="['/']">
+    login
+  </button>
+
+</div>

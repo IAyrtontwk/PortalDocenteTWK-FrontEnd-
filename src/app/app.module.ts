@@ -20,12 +20,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-<<<<<<< HEAD
-    
-
-=======
     HttpClientModule
->>>>>>> Development
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

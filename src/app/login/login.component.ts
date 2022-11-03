@@ -3,6 +3,7 @@ import { Teacher } from '../models/login.model';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../services/user.service';
 import * as bcrypt from 'bcryptjs';
+import { Router } from '@angular/router'
 
 
 
@@ -13,24 +14,16 @@ import * as bcrypt from 'bcryptjs';
   providers: [CookieService]
 })
 export class LoginComponent implements OnInit {
-  id: any = '';
   user: Teacher = new Teacher('','','','','','','');
 
+  //Ng model usados en el html
   inputRut: string = "";
   inputPassword: string = "";
   rememberUserSwitch: boolean = false;
   rutInvalido: boolean = false;
 
-  // Modal
-  formTitle : string = '';
-  modalTitle: string = 'Configuracion de contraseña';
-  recoveryPass: boolean = false;
-  codVerInput: string = '';
-  newPassInput: string = '';
-  repeatPassInput: string = '';
-
-
-  constructor(private cookieService: CookieService, private userService: UserService) { 
+  constructor(private cookieService: CookieService, private userService: UserService,
+    private router: Router) { 
     if(this.cookieService.check('user')){
     this.inputRut = this.cookieService.get('user');
     this.rememberUserSwitch = true ;
@@ -38,13 +31,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.DoLogin();
   }
 
   DoLogin() {
     const salt = bcrypt.genSaltSync(10);
-    const pass = bcrypt.hashSync('algo', salt);
-    console.log(pass)
+    const pass = bcrypt.hashSync(this.inputPassword, salt);
+    this.inputPassword = pass;
   }
   // // setear modal 
   // setModalCrearContrasena= ()=> {
@@ -61,9 +53,9 @@ export class LoginComponent implements OnInit {
   // }
 
 
-  setModalRecuperarContrasena = () =>{
-    this.modalTitle = 'Recuperar Contraseña'
-  }
+  // setModalRecuperarContrasena = () =>{
+  //   this.modalTitle = 'Recuperar Contraseña'
+  // }
 
 
   //funcion recuperaración  contrasena
@@ -87,8 +79,14 @@ export class LoginComponent implements OnInit {
 
   //Funciones service User
   authUser = () => {
-    this.userService.autenthication(this.user).subscribe( data => {
-      console.log(data);
+    this.userService.autenthication(this.user)
+    .subscribe( 
+      data => {
+        console.log(data);
+        localStorage.setItem('token', data.token);
+      }, error => {
+        console.error();
+        console.log(error);
     })
   }
 
@@ -109,7 +107,9 @@ export class LoginComponent implements OnInit {
     this.user.rut = this.inputRut;
     this.user.password = this.inputPassword;
     console.log(this.user);
+    this.DoLogin();
     this.authUser();
+    this.router.navigate(['home'])
     this.eraseForm();
   };
 
@@ -118,11 +118,6 @@ export class LoginComponent implements OnInit {
     this.inputPassword = '';
   }
 
-
-  isChangePass = () =>{
-    this.formTitle = 'Recuperar Contraseña';
-    this.recoveryPass = true;
-  }
 }
 
 let Fn = {

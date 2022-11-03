@@ -6,14 +6,7 @@ import { Teacher } from '../models/login.model';
   styleUrls: ['./crearcontrasena.component.css']
 })
 export class CrearcontrasenaComponent implements OnInit {
-  id: any = '';
-  user: Teacher = {
-    rut: '',
-    password: '',
-    name: '',
-    lastname: '',
-    mail: ''
-  }
+  user: Teacher = new Teacher('','','','','','','');
 
   constructor() { }
   // Variables creación de contrasaña
@@ -21,12 +14,6 @@ export class CrearcontrasenaComponent implements OnInit {
   newPass : string = '';
   confirmPass : string = '';
   firstFormInput: string = '';
-
-  
-
-
-
-
 
   ngOnInit(): void {
   }
