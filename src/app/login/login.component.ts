@@ -7,12 +7,15 @@ import { Router } from '@angular/router'
 
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   providers: [CookieService]
 })
+
+
 export class LoginComponent implements OnInit {
   user: Teacher = new Teacher('','','','','','','');
 
@@ -138,5 +141,3 @@ let Fn = {
 		return S?S-1:'k';
 	}
 }
-
-
