@@ -17,7 +17,7 @@ import { Router } from '@angular/router'
 
 
 export class LoginComponent implements OnInit {
-  user: Teacher = new Teacher('','','','','','','');
+  user: Teacher = new Teacher('','','','','','', true,'');
 
   //Ng model usados en el html
   inputRut: string = "";
@@ -86,6 +86,7 @@ export class LoginComponent implements OnInit {
     .subscribe( 
       data => {
         console.log(data);
+        this.router.navigate(['home']);
         localStorage.setItem('token', data.token);
       }, error => {
         console.error();
@@ -112,7 +113,6 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
     this.DoLogin();
     this.authUser();
-    this.router.navigate(['home'])
     this.eraseForm();
   };
 

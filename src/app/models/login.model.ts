@@ -6,6 +6,7 @@ export class Teacher {
         public lastname: string,
         public email: string,
         public authcode: string,
+        public newlogin: any,
         public _id?: any,
     ){}
 }
