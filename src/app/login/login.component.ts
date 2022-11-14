@@ -17,7 +17,7 @@ import { Router } from '@angular/router'
 
 
 export class LoginComponent implements OnInit {
-  user: Teacher = new Teacher('','','','','', true,'');
+  user: Teacher = new Teacher('','','','','', '','');
 
   //Ng model usados en el html
   inputRut: string = "";

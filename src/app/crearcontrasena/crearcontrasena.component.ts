@@ -37,7 +37,7 @@ export class CrearcontrasenaComponent implements OnInit {
       if (this.newPass == this.confirmPass) {
         this.user.password = this.newPass;
         this.user.rut= userRut;
-        this.user.firstLogin = false;
+        this.user.firstLogin = 'false';
         localStorage.removeItem('id');
       } else {
         alert('Las contraseñas deben ser iguales');
