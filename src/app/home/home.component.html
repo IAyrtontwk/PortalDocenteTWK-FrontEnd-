@@ -32,11 +32,10 @@
         </a>
         <div style="float: right" class="btn-group" role="group" aria-label="Basic mixed styles example">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal"> Modificar</button>
-            <!-- (click)="editContact(course._id)"> --> 
+
             
          
           <button type="button" class="btn btn-danger" > Eliminar</button>
-          <!-- (click)="deleteContact(contact._id)"> -->
             
           
         </div>
@@ -44,7 +43,7 @@
 
       <div class="collapse" [id]="'collapseId' + i">
         <div class="card card-body">
-          <b>Descripción: </b> {{ course.description }}
+          <b>Descripción: </b> {{ course.section }}
 
         </div>
       </div>

@@ -123,6 +123,26 @@ export class LoginComponent implements OnInit {
 
 }
 
+(function () {
+  'use strict'
+
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event:any) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
 let Fn = {
 	// Valida el rut con su cadena completa "XXXXXXXX-X"
 	validaRut : function (rutCompleto : any) {
@@ -141,3 +161,4 @@ let Fn = {
 		return S?S-1:'k';
 	}
 }
+

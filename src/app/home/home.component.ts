@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 export class HomeComponent implements OnInit {
   id: any = '';
   courseList: Course[] = [];
-  user: Course = new Course('','','','','','','','');
+  user: Course = new Course('','','','','','','');
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
