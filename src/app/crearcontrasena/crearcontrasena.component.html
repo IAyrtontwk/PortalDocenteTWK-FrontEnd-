@@ -1,19 +1,33 @@
 <div class="container p-5">
   <form>
-    <div class="mb-3"> Nueva Contraseña
+    <div class="mb-3">
+      Nueva Contraseña
       <label for="NewPass" class="form-label"></label>
-      <input type="text" class="form-control" id="newPassInput" name="InputNewPass" placeholder="1234"
-        [(ngModel)]="newPass">
+      <input
+        type="text"
+        class="form-control"
+        id="newPassInput"
+        name="InputNewPass"
+        placeholder="1234"
+        [(ngModel)]="newPass"
+      />
     </div>
-    <div class="mb-3"> confirmar Contraseña
+    <div class="mb-3">
+      confirmar Contraseña
       <label for="ConfirmPass" class="form-label"></label>
-      <input type="text" class="form-control" id="ConfirmPassInput" placeholder="1234" [(ngModel)]="confirmPass">
+      <input
+        type="text"
+        class="form-control"
+        id="ConfirmPassInput"
+        name="InputConfirmPass"
+        placeholder="1234"
+        [(ngModel)]="confirmPass"
+      />
     </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn-primary" (click)="sendPassword()">Guardar</button>
   </form>
-  <br>
+  <br />
   <button type="submit" class="btn btn-primary" [routerLink]="['/']">
     Salir
   </button>
-
 </div>
