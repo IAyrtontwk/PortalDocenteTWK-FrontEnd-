@@ -14,8 +14,8 @@ export class SubjectService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getSubjectByRut(user: Teacher): Observable<any> {
-    return this.http.get(this.url+'viewSubject/' + user.rut);
+  getSubjectByRut(rut: any): Observable<any> {
+    return this.http.get(this.url+'viewSubject/' + rut);
   }
 
 }

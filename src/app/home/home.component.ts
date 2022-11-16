@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
   courseList: Course[] = [];
   user: Teacher = new Teacher('','','','','','','');
   constructor(private userService: UserService, subjectService:SubjectService) {
-    localStorage.getItem('userRut');
-    subjectService.getSubjectByRut(this.user).subscribe(
+    const rut = localStorage.getItem('userRut');
+    subjectService.getSubjectByRut(rut).subscribe(
       data=>{
         console.log(data);
         this.courseList = data;
