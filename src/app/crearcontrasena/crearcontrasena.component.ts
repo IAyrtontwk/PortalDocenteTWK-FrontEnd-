@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../models/login.model';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-crearcontrasena',
   templateUrl: './crearcontrasena.component.html',
@@ -14,14 +15,27 @@ export class CrearcontrasenaComponent implements OnInit {
   newPass: string = '';
   confirmPass: string = '';
 
-  constructor(private userService: UserService) {}
-
+  constructor(private userService: UserService, private router: Router) {}
+  
   ngOnInit(): void {}
   //setear crear contraseña
 
+  
+  setUserinLocal = (user: any) => {
+    localStorage.setItem('username', user.name);
+    localStorage.setItem('lastname', user.lastname);
+    localStorage.setItem('useremail', user.email);
+    localStorage.setItem('userRut', user.rut);
+  }
+  
   savePassword() {
     this.userService.updatePass(this.user).subscribe(
       data => {
+        
+        this.router.navigate(['home']);
+        // console.log(data.user);
+        localStorage.setItem('token', data.token); 
+        this.setUserinLocal(data.user);
         console.log(data);
       }, error => {
         // console.error();
