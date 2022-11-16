@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { NotasComponent } from './notas/notas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NotasComponent,
   ],
   imports: [
     BrowserModule,

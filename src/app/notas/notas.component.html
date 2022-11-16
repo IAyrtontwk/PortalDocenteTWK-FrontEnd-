@@ -1,0 +1,12 @@
+
+<h1>Listado de notas</h1>
+<div class=" form-group" *ngFor="let i of notes">{{i.id}}.{{i.title}}
+  <div class="form-group" *ngIf="show_list">
+    <label class="list-group-item"></label>
+    <input  class="form-control" style="width:25px;" type="text" [(ngModel)]="i.value">
+    <button class="btn btn-primary btn-block" (click)="Edit()" >Modificar</button>
+    <button class=" btn btn-default btn-block" (click)="Save()">Guardar</button>
+    <br>
+    <br>
+  </div>
+</div>
