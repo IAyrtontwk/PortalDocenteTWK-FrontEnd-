@@ -24,10 +24,7 @@
         [(ngModel)]="confirmPass"
       />
     </div>
-    <button type="submit" class="btn btn-primary" (click)="sendPassword()">Guardar</button>
+    <button type="submit" class="btn btn-primary" (click)="sendPassword()" [routerLink]="['/']">Guardar</button>
   </form>
-  <br />
-  <button type="submit" class="btn btn-primary" [routerLink]="['/']">
-    Salir
-  </button>
+ 
 </div>

@@ -23,7 +23,43 @@
   
 </header>
 
-<div>
+<div class="list-group mt-5">
+  <div *ngFor="let course of courseList; let i = index">
+    <a class="list-group-item list-group-item-action" >
+      <div class="d-flex w-100 justify-content-between" >
+        <h5 class="mb-1">{{course.name}}</h5>
+        <small class="text">
+          <i class="bi bi-eye-fill fs-3 text-success text-opacity-50" data-bs-toggle="collapse" [attr.data-bs-target]="'#data'+i"></i>
+        </small>
+      </div>
+      <p class="mb-1">Código : {{course.code}}</p>
+    </a>
+    <div class="collapse" [attr.id]="'data'+i">
+      <div class="card card-body">
+        <small> Codigo Profesor: {{ course.teacherCode }}</small>
+        <small> Año: {{ course.year }}</small>
+        <small> Semestre: {{ course.semester }}</small>
+        <small> Jornada: {{ course.jornada }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="accordion" id="accordionExample">
+  <div class="accordion-item" *ngFor="let course of courseList; let i = index" >
+      <a class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#data'+i">
+        {{ course.name }}
+    </a>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body" [attr.id]="'data'+i">
+        {{ course.codeTeacher }}
+      </div>
+    </div>
+  </div>
+
+</div> -->
+
+<!-- <div>
     <li class="list-group-item" *ngFor="let course of courseList; let i = index">
       <div>
         <a class="btn btn-primary" data-bs-toggle="collapse" [href]="'#collapseId' + i" role="button"
@@ -48,4 +84,4 @@
         </div>
       </div>
     </li>
-  </div>
+  </div> -->
