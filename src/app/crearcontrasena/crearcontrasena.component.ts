@@ -1,39 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../models/login.model';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-crearcontrasena',
   templateUrl: './crearcontrasena.component.html',
-  styleUrls: ['./crearcontrasena.component.css']
+  styleUrls: ['./crearcontrasena.component.css'],
 })
 export class CrearcontrasenaComponent implements OnInit {
-  user: Teacher = new Teacher('','','','','','','');
+  user: Teacher = new Teacher('', '', '', '', '', '', '');
 
-  constructor() { }
   // Variables creación de contrasaña
-  formTitle : string = 'Crear Contraseña'
-  newPass : string = '';
-  confirmPass : string = '';
-  firstFormInput: string = '';
+  formTitle: string = 'Crear Contraseña';
+  newPass: string = '';
+  confirmPass: string = '';
 
-  ngOnInit(): void {
-  }
+  constructor(private userService: UserService, private router: Router) {}
+  
+  ngOnInit(): void {}
   //setear crear contraseña
 
-  setFormCreatePass = () =>{
-    this.formTitle = 'Crear Contraseña'
-    this.firstFormInput = 'Contraseña actual'
+  
+  setUserinLocal = (user: any) => {
+    localStorage.setItem('username', user.name);
+    localStorage.setItem('lastname', user.lastname);
+    localStorage.setItem('useremail', user.email);
+    localStorage.setItem('userRut', user.rut);
   }
-  //función creación de contraseña 
+  
+  savePassword() {
+    this.userService.updatePass(this.user).subscribe(
+      data => {
+        
+        this.router.navigate(['home']);
+        // console.log(data.user);
+        localStorage.setItem('token', data.token); 
+        this.setUserinLocal(data.user);
+        console.log(data);
+      }, error => {
+        // console.error();
+        console.log(error);
+      }
+    );
+  }
+  //función creación de contraseña
 
-  createPassword = ()=> {
-    if (this.newPass == this.confirmPass){
-      this.user.password = this.newPass;
-    }else{
-      alert('Las contraseñas son distintas')
+  createPassword = () => {
+    let userRut = localStorage.getItem('rut');
+    if (userRut !== null) {
+      if (this.newPass == this.confirmPass) {
+        this.user.password = this.newPass;
+        this.user.rut= userRut;
+        this.user.firstLogin = 'false';
+        localStorage.removeItem('id');
+      } else {
+        alert('Las contraseñas deben ser iguales');
+      }
     }
+  };
+
+  sendPassword = () => {
+    this.createPassword();
+    this.savePassword();
   }
-
-
- 
-
 }

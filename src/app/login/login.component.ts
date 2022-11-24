@@ -17,7 +17,7 @@ import { Router } from '@angular/router'
 
 
 export class LoginComponent implements OnInit {
-  user: Teacher = new Teacher('','','','','','','');
+  user: Teacher = new Teacher('','','','','', '','');
 
   //Ng model usados en el html
   inputRut: string = "";
@@ -42,31 +42,6 @@ export class LoginComponent implements OnInit {
     this.inputPassword = pass;
   }
   // // setear modal 
-  // setModalCrearContrasena= ()=> {
-  //   this.modalTitle = 'Crear Contraseña';
-  //   this.primerCampoModal = 'Contraseña actual'
-  // }
-  // //función crear contrasena 
-  // crearContrasena = () => {
-  //  if (this.nuevaContrasena ==this.confirmarContrasena){
-  //   this.user.password = this.nuevaContrasena;
-  //  }else{
-  //   alert('Las contrasenas son distintas')
-  //  }
-  // }
-
-
-  // setModalRecuperarContrasena = () =>{
-  //   this.modalTitle = 'Recuperar Contraseña'
-  // }
-
-
-  //funcion recuperaración  contrasena
-  // recuperarContrasena = ()=>{
-  //   if (this.nuevaContrasena == this.olvidarContrasena ){
-  //     this.user.password = this.enviarRecuperarClave 
-  //   }
-  // }
 
 
   //Funciones cookies
@@ -80,15 +55,30 @@ export class LoginComponent implements OnInit {
     this.cookieService.set(name,value);
   };
 
+  setUserinLocal = (user: any) => {
+    localStorage.setItem('username', user.name);
+    localStorage.setItem('lastname', user.lastname);
+    localStorage.setItem('useremail', user.email);
+    localStorage.setItem('userRut', user.rut);
+  }
+
   //Funciones service User
   authUser = () => {
     this.userService.autenthication(this.user)
     .subscribe( 
       data => {
         console.log(data);
-        localStorage.setItem('token', data.token);
+        if(data.message) {
+          // console.log(data.payload.user.id);
+          localStorage.setItem('rut', data.rut); 
+          this.router.navigate(['setPassword']);
+        }else{
+          this.router.navigate(['home']);
+          // console.log(data.user);
+          localStorage.setItem('token', data.token); 
+          this.setUserinLocal(data.user);
+        }
       }, error => {
-        console.error();
         console.log(error);
     })
   }
@@ -112,7 +102,6 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
     this.DoLogin();
     this.authUser();
-    this.router.navigate(['home'])
     this.eraseForm();
   };
 
@@ -122,6 +111,26 @@ export class LoginComponent implements OnInit {
   }
 
 }
+
+(function () {
+  'use strict'
+
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event:any) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
 
 let Fn = {
 	// Valida el rut con su cadena completa "XXXXXXXX-X"
@@ -141,3 +150,4 @@ let Fn = {
 		return S?S-1:'k';
 	}
 }
+

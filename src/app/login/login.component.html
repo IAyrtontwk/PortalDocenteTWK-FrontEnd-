@@ -1,40 +1,47 @@
-<form class="custom-form" method="post">
+<form class="custom-form needs-validation" novalidate method="post">
   <h1 style="margin: bottom 2%">Portal Docente TWK</h1>
 
   <div class="mb-3">
-    <label for="rutLogin" class="form-label">
+    <label for="validationCustom01" class="form-label">
       Rut
     </label>
-    <input type="text" class="form-control" id="inputRut" name="rutLogin" maxlength="10" placeholder="12345678-9"
-      [(ngModel)]="inputRut" (keyup)="onKeyUpEventRut($event)" />
+    <input type="text" class="form-control" id="validationCustom01" name="rutLogin" maxlength="10"
+      placeholder="12345678-9" [(ngModel)]="inputRut" required (keyup)="onKeyUpEventRut($event)" />
+    <div class="valid-feedback">
+      Válido
+    </div>
+    <div class="invalid-feedback">
+      Ingrese rut válido.
+    </div>
   </div>
 
   <div *ngIf="rutInvalido" id="rutHelp" class="form-text">
-    Ingrese rut correcto. Solo con guión (-)
+    Ingrese rut válido.
   </div>
 
   <div class="mb-3">
-    <label for="passLogin" class="form-label">
+    <label for="validationCustom02" class="form-label">
       Contraseña
     </label>
-    <input type="password" class="form-control" id="inputPass" name="passLogin" [(ngModel)]="inputPassword" />
+    <input type="password" class="form-control" id="validationCustom02" name="passLogin" [(ngModel)]="inputPassword"
+      required>
   </div>
 
   <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" role="switch" id="switchRecUser" name="switchRecUser"
-      [(ngModel)]="rememberUserSwitch" />
+      [(ngModel)]="rememberUserSwitch" required>
     <label class="form-check-label" for="switchUserLogin">
       Recordar usuario
     </label>
   </div>
 
-  <div *ngIf="rutInvalido"   class="mb-3">
+  <div *ngIf="rutInvalido" class="mb-3">
     <button type="submit" class="btn btn-primary" disabled>
       Entrar
     </button>
   </div>
   <div *ngIf="!rutInvalido" class="mb-3">
-    <button [routerLink]="['home']" type="submit" class="btn btn-primary" (click)="login()">
+    <button type="submit" class="btn btn-primary" (click)="login()">
       Entrar
     </button>
   </div>

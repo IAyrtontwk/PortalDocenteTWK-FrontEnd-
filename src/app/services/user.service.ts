@@ -16,12 +16,19 @@ export class UserService {
     return this.http.post(this.url+'login', user);
   }
 
+  updatePass(user: Teacher): Observable<any> {
+    return this.http.post(this.url+'updatePassword', user);
+  }
   loggedIn() {
     return !!localStorage.getItem('token');
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('lastname');
+    localStorage.removeItem('useremail');
+    localStorage.removeItem('userRut');
     this.router.navigate(['/']);
   }
 
