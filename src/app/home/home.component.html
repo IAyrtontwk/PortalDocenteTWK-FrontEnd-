@@ -23,14 +23,11 @@
   
 </header>
 
-<div class="list-group mt-5">
+<div class="list-group mt-5" >
   <div *ngFor="let course of courseList; let i = index">
-    <a class="list-group-item list-group-item-action" >
+    <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" [attr.data-bs-target]="'#data'+i">
       <div class="d-flex w-100 justify-content-between" >
         <h5 class="mb-1">{{course.name}}</h5>
-        <small class="text">
-          <i class="bi bi-eye-fill fs-3 text-success text-opacity-50" data-bs-toggle="collapse" [attr.data-bs-target]="'#data'+i"></i>
-        </small>
       </div>
       <p class="mb-1">Código : {{course.code}}</p>
     </a>
