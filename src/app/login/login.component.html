@@ -5,7 +5,7 @@
     <label for="validationCustom01" class="form-label">
       Rut
     </label>
-    <input type="text" class="form-control" id="validationCustom01" name="rutLogin" maxlength="10"
+    <input type="text" class="form-control item" id="validationCustom01" name="rutLogin" maxlength="10"
       placeholder="12345678-9" [(ngModel)]="inputRut" required (keyup)="onKeyUpEventRut($event)" />
     <div class="valid-feedback">
       Válido
@@ -49,6 +49,9 @@
     <button type="submit" class="btn btn-primary" [routerLink]="['setPassword']">
       Recuperar contrasena
     </button>
+  </div>
+  <div>
+    <button [routerLink]="['notas']">Notas>notas</button>
   </div>
 
 </form>
