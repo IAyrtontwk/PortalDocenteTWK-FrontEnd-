@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
+import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NotasComponent } from './notas/notas.component';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,9 @@ import { NotasComponent } from './notas/notas.component';
     LoginComponent,
     HomeComponent,
     NotasComponent,
+    CrearcontrasenaComponent,
+    HomeComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +28,8 @@ import { NotasComponent } from './notas/notas.component';
     HttpClientModule
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
+
 export class AppModule { }

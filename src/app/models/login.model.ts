@@ -5,7 +5,7 @@ export class Teacher {
         public name: string,
         public lastname: string,
         public email: string,
-        public authcode: string,
+        public firstLogin: string,
         public _id?: any,
     ){}
 }

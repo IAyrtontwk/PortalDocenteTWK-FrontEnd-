@@ -3,6 +3,8 @@ import { Teacher } from '../models/login.model';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../services/user.service';
 import * as bcrypt from 'bcryptjs';
+import { Router } from '@angular/router'
+
 
 
 
@@ -12,24 +14,19 @@ import * as bcrypt from 'bcryptjs';
   styleUrls: ['./login.component.css'],
   providers: [CookieService]
 })
-export class LoginComponent implements OnInit {
-  id: any = '';
-  user: Teacher = new Teacher('','','','','','','');
 
+
+export class LoginComponent implements OnInit {
+  user: Teacher = new Teacher('','','','','', '','');
+
+  //Ng model usados en el html
   inputRut: string = "";
   inputPassword: string = "";
   rememberUserSwitch: boolean = false;
   rutInvalido: boolean = false;
 
-  // Modal
-  modalTitle: string = 'Configuracion de contraseña';
-  recoveryPass: boolean = false;
-  codVerInput: string = '';
-  newPassInput: string = '';
-  repeatPassInput: string = '';
-
-
-  constructor(private cookieService: CookieService, private userService: UserService) { 
+  constructor(private cookieService: CookieService, private userService: UserService,
+    private router: Router) { 
     if(this.cookieService.check('user')){
     this.inputRut = this.cookieService.get('user');
     this.rememberUserSwitch = true ;
@@ -37,14 +34,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.DoLogin();
   }
 
   DoLogin() {
     const salt = bcrypt.genSaltSync(10);
-    const pass = bcrypt.hashSync('algo', salt);
-    console.log(pass)
+    const pass = bcrypt.hashSync(this.inputPassword, salt);
+    this.inputPassword = pass;
   }
+  // // setear modal 
+
 
   //Funciones cookies
   deleteCookie(name: string){
@@ -57,10 +55,31 @@ export class LoginComponent implements OnInit {
     this.cookieService.set(name,value);
   };
 
+  setUserinLocal = (user: any) => {
+    localStorage.setItem('username', user.name);
+    localStorage.setItem('lastname', user.lastname);
+    localStorage.setItem('useremail', user.email);
+    localStorage.setItem('userRut', user.rut);
+  }
+
   //Funciones service User
   authUser = () => {
-    this.userService.autenthication(this.user).subscribe( data => {
-      console.log(data);
+    this.userService.autenthication(this.user)
+    .subscribe( 
+      data => {
+        console.log(data);
+        if(data.message) {
+          // console.log(data.payload.user.id);
+          localStorage.setItem('rut', data.rut); 
+          this.router.navigate(['setPassword']);
+        }else{
+          this.router.navigate(['home']);
+          // console.log(data.user);
+          localStorage.setItem('token', data.token); 
+          this.setUserinLocal(data.user);
+        }
+      }, error => {
+        console.log(error);
     })
   }
 
@@ -81,6 +100,7 @@ export class LoginComponent implements OnInit {
     this.user.rut = this.inputRut;
     this.user.password = this.inputPassword;
     console.log(this.user);
+    this.DoLogin();
     this.authUser();
     this.eraseForm();
   };
@@ -90,12 +110,27 @@ export class LoginComponent implements OnInit {
     this.inputPassword = '';
   }
 
-
-  isChangePass = () =>{
-    this.modalTitle = ' Recuperar contraseña ';
-    this.recoveryPass = true;
-  }
 }
+
+(function () {
+  'use strict'
+
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event:any) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
 
 let Fn = {
 	// Valida el rut con su cadena completa "XXXXXXXX-X"
@@ -115,5 +150,4 @@ let Fn = {
 		return S?S-1:'k';
 	}
 }
-
 
