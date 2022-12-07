@@ -7,46 +7,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotasComponent implements OnInit {
 
-  notes= [
-    {id:1, title: '', value: '0.0'}, 
-    {id:2, title: '', value: '0.0'},
-    {id:3, title: '', value: '0.0'},
-    {id:4, title: '', value: '0.0'},
-    {id:5, title: '', value: '0.0'},
+  my_notes= [
+    {id:1,  value: '5.7', Description:''}, 
+    {id:2,  value: '5.6', Description:''},
+    {id:3,  value: '7.0', Description:''},
+    {id:4,  value: '6.5', Description:''},
+    {id:5,  value: '6.8' ,Description:''},
   ];
-   
+  
 
-  note= {title:null,value:null};
-  show_list= true
+  note= {id:1, value:null, description:null};
+  show_form =false;
+  editing= false;
 
 
-  Edit(){
-    this.show_list= true
-    if(this.show_list == true){
-      console.log('')
-      
-    
+  editNote(){
+    this.show_form= true;
+  }
+  
+  viewNote(note:any){
+    this.editing= true;
+    this.note= note;
+    this.show_form= true;
+  }
+  
+  saveNote(){
+    this.show_form= false;
+    this.show_form= true;
+    if(this.editing){
+      const me =this;
+      this.my_notes.forEach(function(element, index){})
+      alert('modo editar')
     }else{
-      Error()
-      
+      this.note.id= Date.now();
+      this.my_notes.push();
+      this.note= {id:1, value: null, description: null};
     }
-    
+
   }
 
-  Save(){
-    this.show_list= true
-    if (this.show_list== true){
-      console.log('')
-
-    }else{
-      Error()
-
-    }
-    
-      
-    
-  }
-
+  
   constructor() { }
 
   ngOnInit(): void {
