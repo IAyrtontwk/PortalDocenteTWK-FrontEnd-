@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { NotasComponent } from './notas/notas.component';
 import { StudentsComponent } from './students/students.component';
 import { NotasasignaturaComponent } from './notasasignatura/notasasignatura.component';
 
@@ -15,6 +16,8 @@ import { NotasasignaturaComponent } from './notasasignatura/notasasignatura.comp
   declarations: [
     AppComponent,
     LoginComponent,
+    HomeComponent,
+    NotasComponent,
     CrearcontrasenaComponent,
     HomeComponent,
     StudentsComponent,
