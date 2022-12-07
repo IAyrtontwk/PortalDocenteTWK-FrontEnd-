@@ -15,8 +15,8 @@ export class QualificationsService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getQualificationsByStudents(rut: any): Observable<any> {
-    return this.http.get(this.url+'qualification/' + rut);
+  getQualificationsBySubject(code: any): Observable<any> {
+    return this.http.get(this.url+'qualification/' + code);
   }
 
 }

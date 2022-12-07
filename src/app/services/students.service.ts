@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Teacher } from '../models/login.model'
-import { Router } from '@angular/router'
 import { Course } from '../models/home.model';
 
 @Injectable({
@@ -12,10 +11,10 @@ export class StudentsService {
   
   url = 'http://localhost:4000/student/';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
-  getStudentsByRut(rut: any): Observable<any> {
-    return this.http.get(this.url+'student/' + rut);
+  getStudentsBySubject(code: any): Observable<any> {
+    return this.http.get(this.url+'studentBySubject/' + code);
   }
 
 }
