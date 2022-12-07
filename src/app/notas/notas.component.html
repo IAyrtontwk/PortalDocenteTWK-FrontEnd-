@@ -1,18 +1,31 @@
-<div class=" col-md-6">
+<div class="col-md-6">
   <h2>Listado de notas</h2>
   <ul class="list-group">
-    <input type="text" style="width:25px" (click)="viewNote(n)" class="list-group-item" *ngFor="let n of my_notes" [(ngModel)]="n.value">
+    <input
+      type="text"
+      style="width: 25px"
+      (click)="viewNote(n)"
+      class="list-group-item"
+      *ngFor="let n of my_notes"
+    />
   </ul>
-  <button type="button" class="btn btn-primary" (click)="editNote()" >Editar</button>
+  <button type="button" class="btn btn-primary" (click)="editNote()">
+    Editar
+  </button>
 </div>
 
 <div class="col-md-6" *ngIf="show_form">
-   <h2>Editar Nota</h2>
-   <input  class="form-control" type="text" style="width:25px" [(ngModel)]="note.value"/>
-   <br/>
+  <h2>Editar Nota</h2>
+  <input
+    class="form-control"
+    type="text"
+    style="width: 25px"
+  />
+  <br />
 
-    <div class="col-md-6">
-      <button type="button" class="btn btn-primary"  (click)="saveNote()">Guardar</button>
-    </div>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-primary" (click)="saveNote()">
+      Guardar
+    </button>
+  </div>
 </div>
-

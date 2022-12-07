@@ -1,22 +1,22 @@
-import { NgModule, Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
+import { CookieService } from 'ngx-cookie-service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { CookieService } from 'ngx-cookie-service';
 import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.component';
-import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { NotasComponent } from './notas/notas.component';
-import { StudentsComponent } from './students/students.component';
 import { NotasasignaturaComponent } from './notasasignatura/notasasignatura.component';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     NotasComponent,
     CrearcontrasenaComponent,
     HomeComponent,

@@ -5,9 +5,6 @@ import { UserService } from '../services/user.service';
 import * as bcrypt from 'bcryptjs';
 import { Router } from '@angular/router'
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
