@@ -1,9 +1,14 @@
+<img id="logoTWK" src="https://i.ibb.co/4smmmTH/Logo-PDTWK.png" border="0">
+
+<h1 class="title">Bienvenido a Portal Docente TWK</h1>
+
+
 <form class="custom-form needs-validation" novalidate method="post">
-  <h1 style="margin: bottom 2%">Portal Docente TWK</h1>
+  
 
   <div class="mb-3">
     <label for="validationCustom01" class="form-label">
-      Rut
+      Ingrese su RUT
     </label>
     <input type="text" class="form-control item" id="validationCustom01" name="rutLogin" maxlength="10"
       placeholder="12345678-9" [(ngModel)]="inputRut" required (keyup)="onKeyUpEventRut($event)" />
@@ -11,17 +16,17 @@
       Válido
     </div>
     <div class="invalid-feedback">
-      Ingrese rut válido.
+      Ingrese RUT válido.
     </div>
   </div>
 
   <div *ngIf="rutInvalido" id="rutHelp" class="form-text">
-    Ingrese rut válido.
+    Ingrese RUT válido.
   </div>
 
   <div class="mb-3">
     <label for="validationCustom02" class="form-label">
-      Contraseña
+      Ingrese su Contraseña
     </label>
     <input type="password" class="form-control" id="validationCustom02" name="passLogin" [(ngModel)]="inputPassword"
       required>
@@ -35,23 +40,30 @@
     </label>
   </div>
 
-  <div *ngIf="rutInvalido" class="mb-3">
-    <button type="submit" class="btn btn-primary" disabled>
-      Entrar
-    </button>
+
+
+
+  <div class="botones">
+    <div *ngIf="rutInvalido" class="mb-3"> 
+      <button type="submit" class="btn btn-primary" disabled>
+        Ingresar
+      </button>
+    </div>
+    <div *ngIf="!rutInvalido" class="mb-3">
+      <button type="submit" class="btn btn-primary" (click)="login()">
+        Ingresar
+      </button>
+    </div>
+    <div class="mb-4"> 
+      <button type="submit" class="btn btn-primary" [routerLink]="['setPassword']">
+        Recuperar Contraseña
+      </button>
+    </div>
   </div>
-  <div *ngIf="!rutInvalido" class="mb-3">
-    <button type="submit" class="btn btn-primary" (click)="login()">
-      Entrar
-    </button>
-  </div>
-  <div class="mb-3">
-    <button type="submit" class="btn btn-primary" [routerLink]="['setPassword']">
-      Recuperar contrasena
-    </button>
-  </div>
-  <div>
+
+  
+  <!-- <div>
     <button [routerLink]="['notas']">Notas>notas</button>
-  </div>
+  </div> -->
 
 </form>
