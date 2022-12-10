@@ -13,8 +13,8 @@ export class StudentsService {
 
   constructor(private http: HttpClient) { }
 
-  getStudentsBySubject(code: any): Observable<any> {
-    return this.http.get(this.url+'studentBySubject/' + code);
+  getStudentsBySubject(id: any): Observable<any> {
+    return this.http.get(this.url+'studentBySubject/' + id);
   }
 
 }

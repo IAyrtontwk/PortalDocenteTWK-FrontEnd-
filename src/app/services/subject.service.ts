@@ -14,5 +14,8 @@ export class SubjectService {
   getSubjectByRut(rut: any): Observable<any> {
     return this.http.get(this.url+'byTeacher/' + rut);
   }
+  getSubjectByCode(code: any): Observable<any> {
+    return this.http.get(this.url+'byCode/' + code);
+  }
 
 }

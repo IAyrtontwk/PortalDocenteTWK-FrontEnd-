@@ -11,8 +11,6 @@ import { Router } from '@angular/router'
   styleUrls: ['./login.component.css'],
   providers: [CookieService]
 })
-
-
 export class LoginComponent implements OnInit {
   user: Teacher = new Teacher('','','','','', '','');
 
@@ -38,9 +36,7 @@ export class LoginComponent implements OnInit {
     const pass = bcrypt.hashSync(this.inputPassword, salt);
     this.inputPassword = pass;
   }
-  // // setear modal 
-
-
+  
   //Funciones cookies
   deleteCookie(name: string){
     this.cookieService.delete(name)
@@ -111,7 +107,6 @@ export class LoginComponent implements OnInit {
 
 (function () {
   'use strict'
-
 
   var forms = document.querySelectorAll('.needs-validation')
 

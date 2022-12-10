@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { NotasComponent } from './notas/notas.component';
+import { NotasasignaturaComponent } from './notasasignatura/notasasignatura.component';
 
 
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
+    { path: 'setPassword', component: CrearcontrasenaComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'notas', component: NotasComponent},
-    { path: 'setPassword', component: CrearcontrasenaComponent }
+    { path: 'subject/:code', component: NotasasignaturaComponent}
 ];
 
 
