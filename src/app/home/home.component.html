@@ -21,7 +21,7 @@
 </header>
 
 <p class="titulo">
-  Bienvenido *Nombre Profesor*
+  Bienvenido Docente {{ user.name }} {{ user.lastname }}
 </p>
 <p class="subtitulo">
   Estas son tus asignaturas del semestre. 
@@ -45,7 +45,7 @@
           <small> Jornada: {{ course.jornada }}</small>
         </div>
         <div class="btn-acceso">
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" routerLink="/subject/{{ course.code }}" class="btn btn-primary">
             Calificaciones
           </button>
         </div>

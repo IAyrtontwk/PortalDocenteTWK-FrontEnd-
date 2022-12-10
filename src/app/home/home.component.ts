@@ -18,11 +18,11 @@ export class HomeComponent implements OnInit {
     subjectService: SubjectService
   ) {
     const rut = localStorage.getItem('userRut');
-    const nombre = localStorage.getItem('username');
-    const apellido = localStorage.getItem('lastname');
+    this.user.name = localStorage.getItem('username')!;
+    this.user.lastname = localStorage.getItem('lastname')!;
     subjectService.getSubjectByRut(rut).subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.courseList = data;
       },
       (error) => {

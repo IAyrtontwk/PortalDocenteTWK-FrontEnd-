@@ -23,6 +23,10 @@ export class UserService {
     return !!localStorage.getItem('token');
   }
 
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
@@ -30,10 +34,6 @@ export class UserService {
     localStorage.removeItem('useremail');
     localStorage.removeItem('userRut');
     this.router.navigate(['/']);
-  }
-
-  getToken() {
-    return localStorage.getItem('token');
   }
 
 }
