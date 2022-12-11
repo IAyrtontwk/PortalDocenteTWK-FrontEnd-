@@ -18,6 +18,7 @@ export class NotasasignaturaComponent implements OnInit {
   studentsList: Student[] = [];
   qualifsSubject: Qualification[] = [];
   codeSubject: string = '';
+  editQualifs: boolean = false;
   constructor(
     private subjectService: SubjectService,
     private studentService: StudentsService,
@@ -30,19 +31,34 @@ export class NotasasignaturaComponent implements OnInit {
       (data) => {
         this.subject = data.subject[0];
         // console.log(this.subject);
-        this.studentService.getStudentsBySubject(this.subject._id).subscribe((res) => {
-          // console.log(res.response);
-          this.studentsList = res.response;
-          // console.log(this.studentsList);
-        },(error) => {console.log(error);}
+        this.studentService.getStudentsBySubject(this.subject._id).subscribe(
+          (res) => {
+            // console.log(res.response);
+            this.studentsList = res.response;
+            // console.log(this.studentsList);
+          },
+          (error) => {
+            console.log(error);
+          }
         );
-        this.qualifService.getQualificationsBySubject(this.subject.code).subscribe((ok) => {
-          this.qualifsSubject = ok.qualification;
-          console.log(this.qualifsSubject);
-        });
-      },(error) => {console.log(error);}
+        this.qualifService
+          .getQualificationsBySubject(this.subject.code)
+          .subscribe((ok) => {
+            this.qualifsSubject = ok.qualification;
+            console.log(this.qualifsSubject);
+          });
+      },
+      (error) => {
+        console.log(error);
+      }
     );
   }
 
   ngOnInit(): void {}
+
+  editQualifsBtn = () => {
+    console.log('BTN EDIT Qualif')
+  };
+
+  promNotas = () => {};
 }

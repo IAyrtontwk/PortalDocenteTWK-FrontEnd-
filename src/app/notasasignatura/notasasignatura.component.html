@@ -1,14 +1,21 @@
 <header>
   <nav class="navbar navbar-expand bg-faded">
     <div class="container-fluid navbar-dark" style="background-color: #002471">
-      <a [routerLink]="['Home']"><img id="logoTWK" src="https://i.ibb.co/2Y8Qj3t/Logo-PDTWK-bordeblanco.png"
-          alt="Logo-PDTWK-bordeblanco" border="0"></a>
+      <a [routerLink]="['Home']"
+        ><img
+          id="logoTWK"
+          src="https://i.ibb.co/2Y8Qj3t/Logo-PDTWK-bordeblanco.png"
+          alt="Logo-PDTWK-bordeblanco"
+          border="0"
+      /></a>
 
       <div class="collapse_nav navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a><button type="button" class="btn btn-danger cerr-ses"><i class=" bi bi-box-arrow-right"></i>
-            </button></a>
+            <a
+              ><button type="button" class="btn btn-danger cerr-ses">
+                <i class="bi bi-box-arrow-right"></i></button
+            ></a>
           </li>
         </ul>
       </div>
@@ -18,36 +25,20 @@
 
 <div class="subject-data">
   <div class="div1">
-    <p class="subject-name">
-      <b>Asignatura: </b> {{ subject.name }}
-    </p>
-    <p class="subject-code">
-      <b>Código: </b> {{ subject.code }}
-    </p>
+    <p class="subject-name"><strong>Asignatura: </strong> {{ subject.name }}</p>
+    <p class="subject-code"><strong>Código: </strong> {{ subject.code }}</p>
   </div>
   <div class="btn-acceso-editar">
-    <button type="submit" class="btn btn-dark">
-      Editar Calificaciones
-    </button>
+    <button type="button" class="btn btn-dark" (click)="editQualifsBtn()" >Editar Calificaciones</button>
   </div>
   <div class="btn-acceso-guardar">
     <button type="submit" class="btn btn-success">
       Guardar Calificaciones
     </button>
   </div>
-
 </div>
 
-
-
-
-<div class="list-students">
-  Listado de Estudiantes
-</div>
-
-
-
-
+<div class="list-students">Listado de Estudiantes</div>
 
 <div class="list-group mt-5">
   <table class="table table-hover">
@@ -55,24 +46,67 @@
       <tr>
         <th class="col">Nombre</th>
         <th class="col">Apellido</th>
+        <th class="col">Rut</th>
         <th class="col">N1</th>
         <th class="col">N2</th>
         <th class="col">N3</th>
         <th class="col">N4</th>
+        <th class="col">N5</th>
         <th class="col">Promedio</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr class="datos-alumnos" *ngFor="let student of studentsList; let i = index">
+      <tr
+        class="datos-alumnos"
+        *ngFor="let student of studentsList; let i = index"
+      >
         <td class="dato">{{ student.name }}</td>
         <td class="dato">{{ student.lastname }}</td>
-        <td *ngFor="let qualif of qualifsSubject; let i = index">
-          <input class="form-control dato" type="text" value="{{ qualif.qualifications }}">
+        <td class="dato">{{ student.rut }}</td>
+        <!-- <td *ngFor="let qualif of qualifsSubject; let i = index"> -->
+        <td class="dato">
+            <input
+              class="form-control dato"
+              type="text"
+              value="{{ qualifsSubject[i].qualifications[0] }}"
+              disable=""
+            />
         </td>
+        <td class="dato">
+            <input
+              class="form-control dato"
+              type="text"
+              value="{{ qualifsSubject[i].qualifications[1] }}"
+              disable=""
+            />
+        </td>
+        <td class="dato">
+            <input
+              class="form-control dato"
+              type="text"
+              value="{{ qualifsSubject[i].qualifications[2] }}"
+              disable=""
+            />
+        </td>
+        <td class="dato">
+            <input
+              class="form-control dato"
+              type="text"
+              value="{{ qualifsSubject[i].qualifications[3] }}"
+              disable=""
+            />
+        </td>
+        <td class="dato">
+            <input
+              class="form-control dato"
+              type="text"
+              value="{{ qualifsSubject[i].qualifications[4] }}"
+              disable=""
+            />
+        </td>
+        <td> PROM </td>
       </tr>
-
+    </tbody>
   </table>
-
-
 </div>
