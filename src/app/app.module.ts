@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotasComponent } from './notas/notas.component';
 import { NotasasignaturaComponent } from './notasasignatura/notasasignatura.component';
-import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { StudentsComponent } from './students/students.component';
     NotasComponent,
     CrearcontrasenaComponent,
     HomeComponent,
-    StudentsComponent,
     NotasasignaturaComponent
   ],
   imports: [
