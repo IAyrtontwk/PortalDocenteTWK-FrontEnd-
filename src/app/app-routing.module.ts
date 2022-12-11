@@ -4,14 +4,14 @@ import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.comp
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotasasignaturaComponent } from './notasasignatura/notasasignatura.component';
-
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
-    { path: 'setPassword', component: CrearcontrasenaComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'subject/:code', component: NotasasignaturaComponent}
+    { path: 'setPassword', component: CrearcontrasenaComponent, canActivate: [AuthGuard] },
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'subject/:code', component: NotasasignaturaComponent, canActivate: [AuthGuard]}
 ];
 
 

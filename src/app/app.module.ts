@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 
+import { AuthGuard } from './auth.guard';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.component';
@@ -29,7 +31,7 @@ import { StudentsComponent } from './students/students.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, AuthGuard],
   bootstrap: [AppComponent],
  
 })
