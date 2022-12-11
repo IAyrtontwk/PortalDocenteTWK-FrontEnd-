@@ -63,12 +63,12 @@
       </tr>
     </thead>
 
-    <tbody *ngFor="let student of studentsList; let i = index">
-      <tr class="datos-alumnos">
+    <tbody>
+      <tr class="datos-alumnos" *ngFor="let student of studentsList; let i = index">
         <td class="dato">{{ student.name }}</td>
         <td class="dato">{{ student.lastname }}</td>
         <td *ngFor="let qualif of qualifsSubject; let i = index">
-          <input class="form-control" type="text" value="{{ qualif.qualifications }}">
+          <input class="form-control dato" type="text" value="{{ qualif.qualifications }}">
         </td>
       </tr>
 
