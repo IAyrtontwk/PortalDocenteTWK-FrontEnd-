@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private userService: UserService,
     private router: Router) { 
+      this.userService.logout();
     if(this.cookieService.check('user')){
     this.inputRut = this.cookieService.get('user');
     this.rememberUserSwitch = true ;
