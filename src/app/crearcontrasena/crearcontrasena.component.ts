@@ -14,6 +14,7 @@ export class CrearcontrasenaComponent implements OnInit {
   formTitle: string = 'Crear Contraseña';
   newPass: string = '';
   confirmPass: string = '';
+  claveInvalida: boolean = false;
 
   constructor(private userService: UserService, private router: Router) {}
   
@@ -58,6 +59,15 @@ export class CrearcontrasenaComponent implements OnInit {
       }
     }
   };
+
+  onKeyUpEventPass(event: any){
+    if(this.newPass == this.confirmPass) {
+      this.claveInvalida = false;
+    }else{
+      this.claveInvalida = true;
+    }
+ }
+
 
   sendPassword = () => {
     this.createPassword();

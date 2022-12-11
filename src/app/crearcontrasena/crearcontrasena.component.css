@@ -1,0 +1,94 @@
+.container-fluid{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#logoTWK {
+    width: 20%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    margin-right: auto;
+    margin-left: auto;
+}
+.collapse_nav {
+    padding-left: 40%;
+}
+
+.indicaciones{
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.custom-form {
+    min-width: 300px;
+    max-width: 60%;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    color: black;
+    margin-top: 2rem;
+    font-family: Montserrat, sans-serif;
+}
+
+.conteiner-main-conteiner {
+    margin-top: 1%;
+}
+
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: #123D8E;
+    border-color: #123D8E;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ca5;
+    border-color: #1d4ca5;
+}
+
+.boton{
+    margin-left: 40%;
+    margin-right: auto;
+}
+
+.ingreso-pass{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#passHelp {
+    color: #b11409;
+}
+
+
+
+
+
+
+@media(max-width:375px) {
+
+    #logoTWK {
+        width: 40%;
+        margin-top: 2rem;
+        display: -webkit-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+
+
+
+
+
+}

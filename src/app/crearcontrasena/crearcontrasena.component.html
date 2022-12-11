@@ -1,30 +1,44 @@
-<div class="container p-5">
-  <form>
+<header>
+  <!-- As a link -->
+  <nav class="navbar navbar-expand bg-faded">
+    <div class="container-fluid navbar-dark" style="background-color: #002471">
+      <a [routerLink]="['Home']"><img id="logoTWK" src="https://i.ibb.co/2Y8Qj3t/Logo-PDTWK-bordeblanco.png"
+          alt="Logo-PDTWK-bordeblanco" border="0"></a>
+      <div class="collapse_nav navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav mr-auto">
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<p class="indicaciones">Por favor, modifique la contraseña inicial</p>
+
+
+<div class="ingreso-pass custom-form">
+  <form novalidate method="post">
     <div class="mb-3">
-      Nueva Contraseña
+      Ingresar Nueva Contraseña
       <label for="NewPass" class="form-label"></label>
-      <input
-        type="text"
-        class="form-control"
-        id="newPassInput"
-        name="InputNewPass"
-        placeholder="1234"
-        [(ngModel)]="newPass"
-      />
+      <input type="text" class="form-control" id="newPassInput" name="InputNewPass" placeholder="1234"
+        [(ngModel)]="newPass" />
     </div>
     <div class="mb-3">
-      confirmar Contraseña
+      Confirmar Contraseña
       <label for="ConfirmPass" class="form-label"></label>
-      <input
-        type="text"
-        class="form-control"
-        id="ConfirmPassInput"
-        name="InputConfirmPass"
-        placeholder="1234"
-        [(ngModel)]="confirmPass"
-      />
+      <input type="text" class="form-control" id="ConfirmPassInput" name="InputConfirmPass" placeholder="1234"
+        [(ngModel)]="confirmPass" (keyup)="onKeyUpEventPass($event)"/>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="sendPassword()" [routerLink]="['/']">Guardar</button>
+
+    <div *ngIf="claveInvalida" id="passHelp" class="form-text">
+      Las contraseñas no coinciden.
+    </div>
+    <div class="boton">
+      <button type="submit" class="btn btn-primary" (click)="sendPassword()" [routerLink]="['/']">Guardar</button>
+    </div>
+
   </form>
- 
+
 </div>
