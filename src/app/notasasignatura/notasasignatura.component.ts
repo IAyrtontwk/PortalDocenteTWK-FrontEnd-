@@ -108,7 +108,7 @@ export class NotasasignaturaComponent implements OnInit {
     sumaNotas += nota;
     });
     prom = sumaNotas/notas.length;
-    return prom;
+    return Math.round(prom);
   };
   
   logout = () => {
