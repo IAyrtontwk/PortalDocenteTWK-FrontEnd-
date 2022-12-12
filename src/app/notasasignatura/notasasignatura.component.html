@@ -70,7 +70,7 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[0] }}"
-              disable=""
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -78,7 +78,7 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[1] }}"
-              disable=""
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -86,7 +86,7 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[2] }}"
-              disable=""
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -94,7 +94,7 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[3] }}"
-              disable=""
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -102,7 +102,7 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[4] }}"
-              disable=""
+              [disabled]="isEdit"
             />
         </td>
         <td> PROM </td>

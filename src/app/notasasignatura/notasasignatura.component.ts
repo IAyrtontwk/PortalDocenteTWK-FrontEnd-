@@ -19,6 +19,7 @@ export class NotasasignaturaComponent implements OnInit {
   qualifsSubject: Qualification[] = [];
   codeSubject: string = '';
   editQualifs: boolean = false;
+  isEdit: boolean = true;
   constructor(
     private subjectService: SubjectService,
     private studentService: StudentsService,
@@ -58,6 +59,7 @@ export class NotasasignaturaComponent implements OnInit {
 
   editQualifsBtn = () => {
     console.log('BTN EDIT Qualif')
+    this.isEdit=false;
   };
 
   promNotas = () => {};
