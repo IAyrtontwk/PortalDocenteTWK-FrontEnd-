@@ -92,6 +92,7 @@ export class NotasasignaturaComponent implements OnInit {
 
     });
     this.isEdit=true;
+    this.qualifsSubject = this.qualifSubjecEdit;
     this.qualifService
       .getQualificationsBySubject(this.subject.code)
       .subscribe((ok) => {
@@ -99,7 +100,6 @@ export class NotasasignaturaComponent implements OnInit {
         // console.log(this.qualifsSubject);
       },
       (error) => {console.log(error)});
-      
   };
 
   calculoProm = (notas: number[]) => {
