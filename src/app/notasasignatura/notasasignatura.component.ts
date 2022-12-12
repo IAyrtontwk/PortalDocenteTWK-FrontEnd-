@@ -5,6 +5,7 @@ import { Qualification } from '../models/qualif.model';
 import { SubjectService } from '../services/subject.service';
 import { StudentsService } from '../services/student.service';
 import { QualificationService } from '../services/qualification.service';
+import { UserService } from '../services/user.service';
 // import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -23,6 +24,7 @@ export class NotasasignaturaComponent implements OnInit {
   isEdit: boolean = true;
   constructor(
     private subjectService: SubjectService,
+    private userService: UserService,
     private studentService: StudentsService,
     private qualifService: QualificationService,
     private aRoute: ActivatedRoute
@@ -95,16 +97,23 @@ export class NotasasignaturaComponent implements OnInit {
       .subscribe((ok) => {
         this.qualifsSubject = ok.qualification;
         // console.log(this.qualifsSubject);
-      });
+      },
+      (error) => {console.log(error)});
+      
   };
 
   calculoProm = (notas: number[]) => {
     let sumaNotas = 0;
     let prom = 0;
+
     notas.forEach((nota) => {
-      sumaNotas += nota;
+    sumaNotas += nota;
     });
     prom = sumaNotas/notas.length;
     return prom;
+  };
+  
+  logout = () => {
+    this.userService.logout();
   };
 }

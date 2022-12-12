@@ -47,6 +47,9 @@ body {
     color: #b11409;
 }
 
+#passHelp {
+    color: #b11409;
+}
 
 .botones {
     display: grid;

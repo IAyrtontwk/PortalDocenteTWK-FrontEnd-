@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand bg-faded">
     <div class="container-fluid navbar-dark" style="background-color: #002471">
-      <a [routerLink]="['Home']"
+      <a [routerLink]="['/home']"
         ><img
           id="logoTWK"
           src="https://i.ibb.co/2Y8Qj3t/Logo-PDTWK-bordeblanco.png"
@@ -13,7 +13,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a
-              ><button type="button" class="btn btn-danger cerr-ses">
+              ><button type="button" class="btn btn-danger cerr-ses" (click)="logout()">
                 <i class="bi bi-box-arrow-right"></i></button
             ></a>
           </li>

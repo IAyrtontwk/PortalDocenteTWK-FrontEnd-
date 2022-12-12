@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   inputPassword: string = "";
   rememberUserSwitch: boolean = false;
   rutInvalido: boolean = false;
+  passInvalida: boolean = false;
 
   constructor(private cookieService: CookieService, private userService: UserService,
     private router: Router) { 
@@ -74,6 +75,7 @@ export class LoginComponent implements OnInit {
         }
       }, error => {
         console.log(error);
+        alert(' usuario y/o contraseña incorrectas ');
     })
   }
 
@@ -94,10 +96,19 @@ export class LoginComponent implements OnInit {
     this.user.rut = this.inputRut;
     this.user.password = this.inputPassword;
     console.log(this.user);
+    
     this.DoLogin();
     this.authUser();
     this.eraseForm();
   };
+
+  passwordIncorrect = () =>{
+    if (this.user.password = this.inputPassword){
+      this.passInvalida = false;
+    }else{
+      this.passInvalida != true;
+    }
+  }
 
   eraseForm = () => {
     this.inputRut = '';
