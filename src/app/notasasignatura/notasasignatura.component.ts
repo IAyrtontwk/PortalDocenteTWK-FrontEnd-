@@ -18,10 +18,9 @@ export class NotasasignaturaComponent implements OnInit {
   studentsList: Student[] = [];
   qualifsSubject: Qualification[] = [];
   qualifStudent: Qualification = new Qualification([], '', '', '');
-  qualifEdit: Qualification[] = [];
+  qualifSubjecEdit: Qualification[] = [];
   codeSubject: string = '';
-  isEditQualifs: boolean = false;
-
+  isEdit: boolean = true;
   constructor(
     private subjectService: SubjectService,
     private studentService: StudentsService,
@@ -48,7 +47,7 @@ export class NotasasignaturaComponent implements OnInit {
           .getQualificationsBySubject(this.subject.code)
           .subscribe((ok) => {
             this.qualifsSubject = ok.qualification;
-            console.log(this.qualifsSubject);
+            // console.log(this.qualifsSubject);
           });
       },
       (error) => {
@@ -60,31 +59,37 @@ export class NotasasignaturaComponent implements OnInit {
   ngOnInit(): void {}
 
   editQualifsBtn = () => {
-    console.log('BTN EDIT Qualif');
-    console.log(this.qualifsSubject);
-    // this.qualifEdit = this.qualifsSubject[0];
-    this.qualifStudent = this.qualifsSubject[0];
+    console.log('BTN EDIT Qualif')
+    this.isEdit=false;
+    this.qualifSubjecEdit = this.qualifsSubject;
+    // this.qualifStudent = this.qualifsSubject[1];
 
-    console.log(this.qualifEdit);
-    console.log(this.qualifStudent);
+    // console.log(this.qualifsSubject);
+    // console.log(this.qualifEdit);
+    // console.log(this.qualifStudent);
   };
 
   updateQualifs = () => {
     console.log('BTN Update QUalifs');
-    console.log(this.qualifStudent);
-    this.qualifStudent.qualifications = this.qualifsSubject[0].qualifications
-    console.log(this.qualifStudent);
-    this.qualifService.updateQualification(this.qualifStudent).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    this.qualifService
-      .getQualificationsByStudent(this.qualifStudent.studentCode)
-      .subscribe((data) => {console.log(data)});
+    // console.log(this.qualifStudent);
+    console.log(this.qualifSubjecEdit);
+    this.qualifSubjecEdit.forEach(
+      (qualifStudent) => {
+        // console.log(qualifStudent);
+        this.qualifService.updateQualification(qualifStudent).subscribe(
+          (data) => {
+            // console.log(data);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+
+    });
+    this.isEdit=true;
+    // this.qualifService
+    //   .getQualificationsByStudent(this.qualifStudent.studentCode)
+    //   .subscribe((data) => {console.log(data)});
   };
 
   promNotas = () => {};

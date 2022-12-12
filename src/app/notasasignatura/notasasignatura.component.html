@@ -70,8 +70,8 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[0] }}"
-              disable=""
               [(ngModel)]="qualifsSubject[i].qualifications[0]"
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -79,7 +79,8 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[1] }}"
-              disable=""
+              [(ngModel)]="qualifsSubject[i].qualifications[1]"
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -87,7 +88,8 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[2] }}"
-              disable=""
+              [(ngModel)]="qualifsSubject[i].qualifications[2]"
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -95,7 +97,8 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[3] }}"
-              disable=""
+              [(ngModel)]="qualifsSubject[i].qualifications[3]"
+              [disabled]="isEdit"
             />
         </td>
         <td class="dato">
@@ -103,7 +106,8 @@
               class="form-control dato"
               type="text"
               value="{{ qualifsSubject[i].qualifications[4] }}"
-              disable=""
+              [(ngModel)]="qualifsSubject[i].qualifications[4]"
+              [disabled]="isEdit"
             />
         </td>
         <td> PROM </td>
