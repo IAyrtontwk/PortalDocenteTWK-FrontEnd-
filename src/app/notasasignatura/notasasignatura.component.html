@@ -32,7 +32,7 @@
     <button type="button" class="btn btn-dark" (click)="editQualifsBtn()" >Editar Calificaciones</button>
   </div>
   <div class="btn-acceso-guardar">
-    <button type="submit" class="btn btn-success">
+    <button type="submit" class="btn btn-success" (click)="updateQualifs()">
       Guardar Calificaciones
     </button>
   </div>
@@ -46,7 +46,7 @@
       <tr>
         <th class="col">Nombre</th>
         <th class="col">Apellido</th>
-        <th class="col">Rut</th>
+        <!-- <th class="col">Rut</th> -->
         <th class="col">N1</th>
         <th class="col">N2</th>
         <th class="col">N3</th>
@@ -63,7 +63,7 @@
       >
         <td class="dato">{{ student.name }}</td>
         <td class="dato">{{ student.lastname }}</td>
-        <td class="dato">{{ student.rut }}</td>
+        <!-- <td class="dato">{{ student.rut }}</td> -->
         <!-- <td *ngFor="let qualif of qualifsSubject; let i = index"> -->
         <td class="dato">
             <input
@@ -71,6 +71,7 @@
               type="text"
               value="{{ qualifsSubject[i].qualifications[0] }}"
               disable=""
+              [(ngModel)]="qualifsSubject[i].qualifications[0]"
             />
         </td>
         <td class="dato">

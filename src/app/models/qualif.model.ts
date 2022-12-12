@@ -1,8 +1,8 @@
 export class Qualification {
     constructor(
         public qualifications: number[],
-        public codeSubject: string,
-        public codeStudent: string,
+        public subjectCode: string,
+        public studentCode: string,
         public _id: any,
     ){}
 }
