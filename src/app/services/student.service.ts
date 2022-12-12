@@ -9,7 +9,7 @@ import { Course } from '../models/home.model';
 })
 export class StudentsService {
   
-  url = 'http://localhost:4000/student/';
+  url = 'https://portaltwk-back.onrender.com/student/';
 
   constructor(private http: HttpClient) { }
 

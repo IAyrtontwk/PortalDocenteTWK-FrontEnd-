@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SubjectService {
   
-  url = 'http://localhost:4000/subject/';
+  url = 'https://portaltwk-back.onrender.com/subject/';
 
   constructor(private http: HttpClient) { }
 

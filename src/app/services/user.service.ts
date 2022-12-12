@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:4000/user/';
+  url = 'https://portaltwk-back.onrender.com/user/';
 
   constructor(private http: HttpClient, private router: Router) { }
 

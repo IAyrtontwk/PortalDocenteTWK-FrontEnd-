@@ -8,7 +8,7 @@ import { Qualification } from '../models/qualif.model';
 })
 export class QualificationService {
   
-  url = 'http://localhost:4000/qualification/';
+  url = 'https://portaltwk-back.onrender.com/qualification/';
 
   constructor(private http: HttpClient) { }
 
