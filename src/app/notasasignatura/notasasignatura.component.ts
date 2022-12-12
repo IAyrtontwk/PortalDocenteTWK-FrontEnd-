@@ -48,6 +48,8 @@ export class NotasasignaturaComponent implements OnInit {
           .subscribe((ok) => {
             this.qualifsSubject = ok.qualification;
             // console.log(this.qualifsSubject);
+          }, (error) => {
+            console.log(error);
           });
       },
       (error) => {
@@ -88,6 +90,12 @@ export class NotasasignaturaComponent implements OnInit {
 
     });
     this.isEdit=true;
+    this.qualifService
+      .getQualificationsBySubject(this.subject.code)
+      .subscribe((ok) => {
+        this.qualifsSubject = ok.qualification;
+        // console.log(this.qualifsSubject);
+      });
   };
 
   calculoProm = (notas: number[]) => {
