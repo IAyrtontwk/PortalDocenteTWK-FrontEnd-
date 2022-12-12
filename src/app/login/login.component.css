@@ -1,4 +1,4 @@
-#logoTWK {
+ #logoTWK {
     width: 15%;
     margin-top: 1rem;
     display: -webkit-box;
@@ -29,7 +29,8 @@ body {
     margin: 0px auto;
     background: rgba(255, 255, 255, 0.15);
     padding: 2rem 3rem;
-    margin: auto;
+    margin-left: auto;
+    margin-right:auto;
     border-radius: 2.5rem;
     background-color: #ecf0f3;
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
@@ -49,12 +50,12 @@ body {
 
 .botones {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    margin-left: 3rem;
-    margin-top: 1rem;
+    margin-left: auto;
+    margin-top: auto;
 }
 
 .mb-3 {
@@ -63,11 +64,7 @@ body {
     margin-right: auto;
 }
 
-.mb4 {
-    grid-area: 1 / 2 / 2 / 3;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 
 .btn-primary,
@@ -108,21 +105,23 @@ body {
     }
 
 
-    .title {
-        font-size: 22px;
+    .titulo {
+        font-size: 20px;
+        width:80%;
         margin-top: 1.5rem;
-        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
         font-family: Montserrat, sans-serif;
         font-weight: 700;
     }
 
     .custom-form {
-        min-width: 300px;
+
         max-width: 60%;
-        margin: 0px auto;
         background: rgba(255, 255, 255, 0.15);
         padding: 2rem 3rem;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
         border-radius: 2.5rem;
         background-color: #ecf0f3;
         box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
@@ -159,4 +158,4 @@ body {
         
     }
 
-}
+} 
