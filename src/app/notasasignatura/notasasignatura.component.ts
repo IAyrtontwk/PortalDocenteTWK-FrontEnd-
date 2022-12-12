@@ -6,8 +6,7 @@ import { SubjectService } from '../services/subject.service';
 import { StudentsService } from '../services/student.service';
 import { QualificationService } from '../services/qualification.service';
 import { UserService } from '../services/user.service';
-// import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notasasignatura',
@@ -27,7 +26,8 @@ export class NotasasignaturaComponent implements OnInit {
     private userService: UserService,
     private studentService: StudentsService,
     private qualifService: QualificationService,
-    private aRoute: ActivatedRoute
+    private aRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.codeSubject = aRoute.snapshot.paramMap.get('code')!;
     // console.log(this.codeSubject);
@@ -92,14 +92,12 @@ export class NotasasignaturaComponent implements OnInit {
 
     });
     this.isEdit=true;
+    this.qualifService.getQualificationsBySubject(this.codeSubject).subscribe(
+      (data) => {
+        this.qualifsSubject = data.qualification;
+      }, (error) => { console.log(error) }
+    );
     this.qualifsSubject = this.qualifSubjecEdit;
-    this.qualifService
-      .getQualificationsBySubject(this.subject.code)
-      .subscribe((ok) => {
-        this.qualifsSubject = ok.qualification;
-        // console.log(this.qualifsSubject);
-      },
-      (error) => {console.log(error)});
   };
 
   calculoProm = (notas: number[]) => {
