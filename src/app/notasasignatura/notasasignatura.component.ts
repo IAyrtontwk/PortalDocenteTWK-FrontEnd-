@@ -77,7 +77,7 @@ export class NotasasignaturaComponent implements OnInit {
   updateQualifs = () => {
     console.log('BTN Update QUalifs');
     // console.log(this.qualifStudent);
-    console.log(this.qualifSubjecEdit);
+    // console.log(this.qualifSubjecEdit);
     this.qualifSubjecEdit.forEach(
       (qualifStudent) => {
         // console.log(qualifStudent);

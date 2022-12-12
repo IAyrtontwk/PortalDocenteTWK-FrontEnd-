@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     this.userService.autenthication(this.user)
     .subscribe( 
       data => {
-        console.log(data);
+        // console.log(data);
         if(data.message) {
           // console.log(data.payload.user.id);
           localStorage.setItem('rut', data.rut); 
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
     }
     this.user.rut = this.inputRut;
     this.user.password = this.inputPassword;
-    console.log(this.user);
+    // console.log(this.user);
     
     this.DoLogin();
     this.authUser();
@@ -103,10 +103,10 @@ export class LoginComponent implements OnInit {
   };
 
   passwordIncorrect = () =>{
-    if (this.user.password = this.inputPassword){
+    if (this.user.password == this.inputPassword){
       this.passInvalida = false;
     }else{
-      this.passInvalida != true;
+      this.passInvalida = true;
     }
   }
 

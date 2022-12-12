@@ -11,14 +11,12 @@ import { AppComponent } from './app.component';
 import { CrearcontrasenaComponent } from './crearcontrasena/crearcontrasena.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { NotasComponent } from './notas/notas.component';
 import { NotasasignaturaComponent } from './notasasignatura/notasasignatura.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NotasComponent,
     CrearcontrasenaComponent,
     HomeComponent,
     NotasasignaturaComponent
